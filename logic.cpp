@@ -18,7 +18,6 @@ std::string MerchantSolver::solve() {
         (*it).owner = "обычный купец";
         circle.eraseAndNext(it);
     }
-    std::string res = "";
     std::string* arr = new std::string[totalBales + 1];
     auto rem_it = circle.begin();
     size_t rem_count = circle.size();
@@ -26,12 +25,18 @@ std::string MerchantSolver::solve() {
         arr[(*rem_it).originIndex] = "хитрый купец";
         rem_it.next();
     }
+    std::string cunningMerchantPos = "";
     for (int i = 1; i <= totalBales; ++i) {
-        if (arr[i] != "хитрый купец") {
-            arr[i] = "второй купец";
+        if(arr[i] == "хитрый купец") {
+            cunningMerchantPos += std::to_string(i) + ", ";
         }
-        res += "позиция " + std::to_string(i) + ": " + arr[i] + "\n";
     }
+    if (!cunningMerchantPos.empty()){
+        cunningMerchantPos.pop_back();
+        cunningMerchantPos.pop_back();
+    }
+    std::string res = "";
+    res += "\n Позиции тюков хитрого купца: [" + cunningMerchantPos + "]\n";
     delete[] arr;
     return res;
 }
