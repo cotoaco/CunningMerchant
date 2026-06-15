@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
 #include "logic.h"
-#include "checker.h"
+#include "exceptions.h"
 int getValidInput(const std::string& prompt, int minVal){
     int value;
     std::cout << prompt;
